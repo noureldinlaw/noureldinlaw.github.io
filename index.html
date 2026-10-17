@@ -1,595 +1,190 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-<head>    
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>Noureldin Mamdouh | Professional & Academic Profile</title>
-    <meta name="description" content="Noureldin Mamdouh - Faculty of Law, Alexandria University. Professional and academic profile: CV, certificates, legal and accounting training, and recommendation letters.">
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap" rel="stylesheet">
-    
-    <!-- Google Translate Script -->
-    <script type="text/javascript">
-    function googleTranslateElementInit() {
-      new google.translate.TranslateElement({
-        pageLanguage: 'en', 
-        includedLanguages: 'ar,ru,en,it,fr,de,es', 
-        layout: google.translate.TranslateElement.InlineLayout.SIMPLE
-      }, 'google_translate_element');
-    }
-    </script>
-    <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
-    <style>
-        :root {
-            --primary: #1e3a8a;
-            --secondary: #2563eb;
-            --accent: #0d9488;
-            --bg-color: #f1f5f9;
-            --card-bg: #ffffff;
-            --text-main: #1e293b;
-            --text-muted: #64748b;
-            --border-color: #e2e8f0;
-            --card-sub-bg: #f8fafc;
-            --border-radius: 12px;
-        }
-
-        [data-theme="dark"] {
-            --primary: #60a5fa;
-            --secondary: #3b82f6;
-            --accent: #2dd4bf;
-            --bg-color: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --border-color: #334155;
-            --card-sub-bg: #0f172a;
-        }
-
-        html { scroll-padding-top: 70px; }
-        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Cairo', sans-serif; }
-        body { background-color: var(--bg-color); color: var(--text-main); line-height: 1.7; scroll-behavior: smooth; transition: background 0.3s, color 0.3s; }
-
-        /* Navigation Bar */
-        nav {
-            background-color: #1e293b;
-            padding: 12px 20px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        nav .nav-links { display: flex; gap: 15px; flex-wrap: wrap; align-items: center; }
-        nav a { color: #f8fafc; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: color 0.2s; }
-        nav a:hover { color: var(--primary); }
-
-        .theme-btn {
-            background: var(--secondary);
-            color: #fff;
-            border: none;
-            padding: 6px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: bold;
-            font-size: 0.85rem;
-            transition: background 0.2s;
-        }
-        .theme-btn:hover { background: var(--primary); }
-
-        .layout-wrapper {
-            display: grid;
-            grid-template-columns: 340px 1fr;
-            gap: 30px;
-            max-width: 1350px;
-            margin: 30px auto;
-            padding: 0 20px;
-            align-items: start;
-        }
-
-        /* Sidebar */
-        .sidebar {
-            background: var(--card-bg);
-            border-radius: var(--border-radius);
-            padding: 30px 20px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 80px;
-            border-top: 5px solid var(--secondary);
-            border-left: 1px solid var(--border-color);
-            border-right: 1px solid var(--border-color);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .sidebar-header { text-align: center; margin-bottom: 25px; border-bottom: 1px solid var(--border-color); padding-bottom: 20px; }
-        .sidebar-header h1 { font-size: 1.3rem; color: var(--primary); font-weight: 800; line-height: 1.3; }
-        .sidebar-header p { font-size: 0.88rem; color: var(--text-muted); margin-top: 8px; font-weight: 600; }
-        .rus-intro { font-size: 0.8rem; color: var(--text-muted); font-style: italic; margin-top: 10px; display: block; line-height: 1.4; }
-
-        .cv-button {
-            display: inline-block;
-            background-color: var(--secondary);
-            color: white;
-            padding: 10px 20px;
-            text-decoration: none;
-            border-radius: 6px;
-            font-weight: bold;
-            transition: background 0.2s;
-        }
-        .cv-button:hover { background-color: var(--primary); }
-
-        .contact-list { list-style: none; }
-        .contact-item {
-            display: flex;
-            align-items: flex-start;
-            margin-bottom: 12px;
-            padding: 10px;
-            background: var(--card-sub-bg);
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            text-decoration: none;
-            color: var(--text-main);
-            border: 1px solid var(--border-color);
-        }
-        .contact-item:hover { border-color: var(--secondary); transform: translateX(3px); }
-        .contact-icon { font-size: 1.2rem; margin-right: 10px; }
-        .contact-info { flex: 1; overflow: hidden; }
-        .contact-title { font-size: 0.78rem; color: var(--text-muted); font-weight: 700; display: block; }
-        .contact-value { font-size: 0.82rem; font-weight: 600; word-break: break-all; direction: ltr; text-align: left; display: block; color: var(--primary); }
-
-        /* Main Content */
-        .main-content { display: flex; flex-direction: column; gap: 30px; }
-        .section { 
-            background: var(--card-bg); 
-            padding: 30px; 
-            border-radius: var(--border-radius); 
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
-            border: 1px solid var(--border-color);
-        }
-        .section-title { 
-            color: var(--primary); 
-            font-size: 1.35rem; 
-            font-weight: 800; 
-            border-bottom: 3px solid var(--secondary); 
-            padding-bottom: 10px; 
-            margin-bottom: 25px; 
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            flex-wrap: wrap; 
-            gap: 15px; 
-        }
-
-        /* Search Bar */
-        .search-container { position: relative; width: 100%; max-width: 320px; }
-        .search-input { width: 100%; padding: 9px 15px 9px 38px; border: 2px solid var(--border-color); border-radius: 8px; font-size: 0.88rem; outline: none; background: var(--card-sub-bg); color: var(--text-main); transition: border-color 0.3s; }
-        .search-input:focus { border-color: var(--secondary); }
-        .search-icon { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); font-size: 1rem; color: var(--text-muted); }
-
-        /* Experience and Cards */
-        .experience-card { margin-bottom: 20px; padding: 18px; border-left: 4px solid var(--secondary); background: var(--card-sub-bg); border-radius: 0 8px 8px 0; border: 1px solid var(--border-color); border-left-width: 4px; }
-        .experience-card h3 { color: var(--primary); font-size: 1.05rem; margin-bottom: 5px; }
-        .experience-card p { color: var(--text-muted); font-size: 0.9rem; }
-
-        .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 20px; }
-        .cert-card { background: var(--card-sub-bg); border: 1px solid var(--border-color); border-radius: 10px; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; transition: all 0.3s ease; }
-        .cert-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); border-color: var(--secondary); }
-        .cert-card h3 { font-size: 1.02rem; color: var(--primary); margin-bottom: 5px; }
-        .cert-issuer { font-size: 0.84rem; color: var(--text-muted); margin-bottom: 15px; font-weight: 600; }
-        
-        .cert-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
-        .btn-action { text-align: center; padding: 8px; border-radius: 6px; text-decoration: none; font-size: 0.82rem; font-weight: 700; transition: all 0.2s ease; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .btn-view { background-color: var(--secondary); color: #fff; }
-        .btn-view:hover { background-color: var(--primary); }
-        .btn-verify { background-color: transparent; color: var(--accent); border: 1px solid var(--accent); }
-        .btn-verify:hover { background-color: var(--accent); color: #fff; }
-
-        /* Scroll To Top Button */
-        #scrollTopBtn {
-            position: fixed;
-            bottom: calc(30px + env(safe-area-inset-bottom, 0px));
-            right: 30px;
-            display: none;
-            background-color: var(--secondary);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            width: 45px;
-            height: 45px;
-            font-size: 18px;
-            cursor: pointer;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-            z-index: 1000;
-            transition: background 0.2s;
-        }
-        #scrollTopBtn:hover { background-color: var(--primary); }
-
-        @media (max-width: 992px) {
-            .layout-wrapper { grid-template-columns: 1fr; }
-            .sidebar { position: static; margin-bottom: 20px; }
-            .search-container { max-width: 100%; }
-        }
-    </style>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Noureldin Mamdouh | Law & Tech Profile</title>
+<meta name="description" content="Noureldin Mamdouh - Faculty of Law, Alexandria University. CV, certificates, legal and business training, recommendation letters.">
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script>
+function googleTranslateElementInit(){new google.translate.TranslateElement({pageLanguage:'en',includedLanguages:'ar,ru,en,it,fr,de,es',layout:google.translate.TranslateElement.InlineLayout.SIMPLE},'google_translate_element');}
+</script>
+<script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+<style>
+:root{--bg:#070b14;--bg2:#0d1424;--card:#0f172a;--line:rgba(148,163,184,.14);--text:#f1f5f9;--muted:#94a3b8;--ind:#6366f1;--ind2:#4f46e5;--teal:#22d3ee;--tagbg:rgba(99,102,241,.16);--tagtx:#a5b4fc;--glow:rgba(99,102,241,.18);box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:light){:root:not([data-theme="dark"]){--bg:#f1f5f9;--bg2:#e8eef6;--card:#fff;--line:rgba(15,23,42,.1);--text:#0f172a;--muted:#64748b;--teal:#0891b2;--tagbg:rgba(99,102,241,.12);--tagtx:#4338ca;--glow:rgba(99,102,241,.1)}}
+:root[data-theme="light"]{--bg:#f1f5f9;--bg2:#e8eef6;--card:#fff;--line:rgba(15,23,42,.1);--text:#0f172a;--muted:#64748b;--teal:#0891b2;--tagbg:rgba(99,102,241,.12);--tagtx:#4338ca;--glow:rgba(99,102,241,.1)}
+:root[data-theme="dark"]{--bg:#070b14;--bg2:#0d1424;--card:#0f172a;--line:rgba(148,163,184,.14);--text:#f1f5f9;--muted:#94a3b8;--teal:#22d3ee;--tagbg:rgba(99,102,241,.16);--tagtx:#a5b4fc;--glow:rgba(99,102,241,.18)}
+*{box-sizing:border-box;margin:0;padding:0;font-family:'Cairo',sans-serif}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{background:radial-gradient(900px 400px at 15% -5%,var(--glow),transparent),var(--bg);color:var(--text);line-height:1.7;overflow-x:hidden;min-height:100vh}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;display:flex;justify-content:space-between;align-items:center;gap:12px;padding:12px 24px;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.3px;font-size:.95rem}
+.badge{background:linear-gradient(135deg,var(--ind),#3b82f6);color:#fff;font-size:.68rem;padding:3px 10px;border-radius:7px;font-weight:800}
+.hdr-r{display:flex;align-items:center;gap:10px}
+.icon-btn{width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;font-size:1rem}
+.icon-btn:hover{border-color:var(--ind)}
+main{max-width:1000px;margin:0 auto;padding:30px 20px 90px;display:flex;flex-direction:column;gap:28px}
+.hero{background:linear-gradient(160deg,var(--card),var(--bg2));border:1px solid var(--line);border-radius:22px;padding:34px}
+.pill{display:inline-flex;align-items:center;gap:8px;background:var(--tagbg);color:var(--tagtx);border:1px solid var(--line);border-radius:99px;padding:5px 14px;font-size:.8rem;font-weight:700}
+.hero h1{font-size:clamp(1.7rem,4.6vw,2.7rem);font-weight:900;line-height:1.25;margin:18px 0 12px}
+.hero p.lead{color:var(--muted);max-width:720px}
+.quote{margin-top:20px;border-left:3px solid var(--teal);background:rgba(34,211,238,.07);padding:12px 16px;border-radius:0 10px 10px 0;font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--muted)}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
+.stat{background:var(--bg2);border:1px solid var(--line);border-radius:14px;text-align:center;padding:16px 8px}
+.stat b{display:block;font-size:1.7rem;font-weight:900;color:#60a5fa}
+.stat span{font-size:.68rem;color:var(--muted);letter-spacing:.8px;text-transform:uppercase;font-weight:700}
+.profile{display:flex;flex-direction:column;gap:14px;margin-top:26px;background:var(--bg2);border:1px solid var(--line);border-radius:18px;padding:22px}
+.who{display:flex;align-items:center;gap:14px}
+.avatar{width:68px;height:68px;border-radius:16px;background:linear-gradient(135deg,#3b82f6,var(--ind));padding:2px;flex-shrink:0;overflow:hidden}.avatar img{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:14px;display:block}
+.who b{display:block;font-size:1.05rem}.who small{color:var(--muted)}
+.btn{display:flex;align-items:center;justify-content:center;gap:8px;background:linear-gradient(135deg,var(--ind),var(--ind2));color:#fff;border:0;border-radius:11px;padding:11px 16px;font-weight:800;font-size:.88rem;text-decoration:none;cursor:pointer;transition:.2s}
+.btn:hover{filter:brightness(1.12);transform:translateY(-1px)}
+.btn.ghost{background:transparent;color:var(--text);border:1px solid var(--line)}
+.btn.ghost:hover{border-color:var(--ind)}
+.contacts{display:flex;flex-direction:column;gap:9px}
+.contacts a{display:flex;align-items:center;gap:12px;padding:10px 14px;border:1px solid var(--line);background:var(--card);border-radius:10px;color:var(--text);text-decoration:none;font-size:.84rem;font-weight:700;transition:.2s}
+.contacts a:hover{border-color:var(--ind);transform:translateX(3px)}
+h2.sec{display:flex;align-items:center;gap:10px;font-size:1.35rem;font-weight:900;margin-bottom:16px}
+.timeline{position:relative;padding-left:26px;display:flex;flex-direction:column;gap:14px}
+.timeline:before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--ind),transparent)}
+.tl{position:relative;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.tl:before{content:"";position:absolute;left:-26px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--ind);box-shadow:0 0 0 4px var(--glow)}
+.tl h3{font-size:1.02rem;font-weight:800}.tl .org{color:var(--teal);font-size:.8rem;font-weight:700}.tl p{color:var(--muted);font-size:.86rem;margin-top:4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:space-between;gap:14px;transition:.25s}
+.card:hover{transform:translateY(-3px);border-color:var(--ind);box-shadow:0 10px 28px var(--glow)}
+.tag{display:inline-block;background:var(--tagbg);color:var(--tagtx);border-radius:6px;padding:2px 10px;font-size:.66rem;font-weight:800;letter-spacing:.6px;text-transform:uppercase;margin-bottom:8px}
+.card h3{font-size:.98rem;font-weight:800;line-height:1.4}.card .iss{color:var(--muted);font-size:.78rem;margin-top:3px}
+.acts{display:flex;gap:8px}.acts .btn{flex:1;padding:8px;font-size:.78rem}
+.search{width:100%;padding:11px 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--text);font-size:.88rem;outline:none}
+.search:focus{border-color:var(--ind)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+.chip{background:var(--card);color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:6px 16px;font-size:.8rem;font-weight:700;cursor:pointer}
+.chip.on,.chip:hover{background:var(--ind);border-color:var(--ind);color:#fff}
+.empty{color:var(--muted);text-align:center;padding:20px;display:none}
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(6px);display:none;align-items:center;justify-content:center;z-index:100;padding:16px}
+.modal.on{display:flex}
+.mbox{background:var(--card);border:1px solid var(--line);border-radius:16px;width:100%;max-width:820px;height:min(86vh,720px);display:flex;flex-direction:column;overflow:hidden}
+.mtop{display:flex;justify-content:space-between;align-items:center;gap:10px;padding:12px 16px;border-bottom:1px solid var(--line)}
+.mtop b{font-size:.92rem}.mtop div{display:flex;gap:8px}
+.mtop .btn{padding:6px 12px;font-size:.75rem}
+.mbox iframe{flex:1;border:0;background:#fff}
+.down{position:fixed;right:20px;bottom:calc(20px + env(safe-area-inset-bottom,0px));width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--card);color:var(--text);cursor:pointer;z-index:40;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+@media(max-width:640px){header{padding:10px 14px}.brand span.nm{font-size:.8rem}.hero{padding:22px}.stats{gap:8px}.stat b{font-size:1.3rem}}
+</style>
 </head>
 <body>
+<header>
+  <div class="brand"><span class="badge">LAW &amp; TECH</span><span class="nm">NOURELDIN MAMDOUH</span></div>
+  <div class="hdr-r"><div id="google_translate_element"></div><button class="icon-btn" id="theme" aria-label="Toggle theme">🌙</button></div>
+</header>
 
-    <!-- Navigation Bar -->
-    <nav>
-        <div class="nav-links">
-            <a href="#about">About</a>
-            <a href="#certificates">Certificates</a>
-            <a href="#experience">Experience</a>
-            <a href="#documents">Documents</a>
-            <a href="#contact">Contact</a>
-            <button class="theme-btn" id="themeToggleBtn">🌙 Dark Mode</button>
-        </div>
-        <div id="google_translate_element"></div>
-    </nav>
-
-    <div class="layout-wrapper">
-        
-        <!-- Sidebar -->
-        <aside class="sidebar" id="about">
-            <div class="sidebar-header">
-                <h1>NOURELDIN MAMDOUH KHAMIS AHMED ABUISMAIL</h1>
-                <p class="subtitle">Faculty of Law - Alexandria University</p>
-                <span class="rus-intro">Ambitious specialist with legal education, experience in business administration, and an interest in modern technologies.</span> 
-                
-                <div id="cv" class="cv-section" style="text-align: center; margin-top: 20px;">
-                    <a href="Noureldin_Abuismail_CV_EN.pdf" target="_blank" rel="noopener noreferrer" class="cv-button">
-                        📄 View My CV / Resume
-                    </a>
-                </div>  
-            </div>
-
-            <ul class="contact-list" id="contact">
-                <li>
-                    <a href="tel:+201273818012" class="contact-item">
-                        <span class="contact-icon" aria-hidden="true">📱</span>
-                        <div class="contact-info">
-                            <span class="contact-title">Phone</span>
-                            <span class="contact-value">+20 1273818012</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:noureldin7122@gmail.com" class="contact-item">
-                        <span class="contact-icon" aria-hidden="true">📧</span>
-                        <div class="contact-info">
-                            <span class="contact-title">Personal Email</span>
-                            <span class="contact-value">noureldin7122@gmail.com</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="mailto:law.NoureldinMamdouh261958@alexu.edu.eg" class="contact-item">
-                        <span class="contact-icon" aria-hidden="true">🎓</span>
-                        <div class="contact-info">
-                            <span class="contact-title">Academic Email</span>
-                            <span class="contact-value">law.NoureldinMamdouh261958<br>@alexu.edu.eg</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://wa.me/201273818012" target="_blank" rel="noopener noreferrer" class="contact-item">
-                        <span class="contact-icon" aria-hidden="true">💬</span>
-                        <div class="contact-info">
-                            <span class="contact-title">WhatsApp</span>
-                            <span class="contact-value">01273818012</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://t.me/Noureldin7" target="_blank" rel="noopener noreferrer" class="contact-item">
-                        <span class="contact-icon" aria-hidden="true">✈️</span>
-                        <div class="contact-info">
-                            <span class="contact-title">Telegram</span>
-                            <span class="contact-value">@Noureldin7</span>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="https://vk.com/id1113090360" target="_blank" rel="noopener noreferrer" class="contact-item">
-                        <span class="contact-icon" aria-hidden="true">🔵</span>
-                        <div class="contact-info">
-                            <span class="contact-title">VK</span>
-                            <span class="contact-value">VKontakte Profile</span>
-                        </div>
-                    </a>
-                </li>
-            </ul>
-        </aside>
-
-        <!-- Main Content -->
-        <main class="main-content">
-            
-            <!-- Quick Highlights / Certificates Overview -->
-            <section id="certificates" class="section">
-                <h2 class="section-title">🎓 Featured Highlights & Certificates</h2>
-
-                <h3 style="color: var(--secondary); margin-top: 15px; font-size: 1.1rem; margin-bottom: 10px;">⚖️ الأكاديمية والقانونية / Academic & Legal</h3>
-                <ul style="margin: 0 20px 20px 20px; line-height: 1.8;">
-                    <li><a href="Alexandria_Port_Authority.pdf" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">تدريب هيئة ميناء الإسكندرية (الشؤون القانونية)</a></li>
-                </ul>
-
-                <h3 style="color: var(--secondary); margin-top: 15px; font-size: 1.1rem; margin-bottom: 10px;">🤖 الذكاء الاصطناعي والتكنولوجيا / AI & Tech</h3>
-                <ul style="margin: 0 20px 10px 20px; line-height: 1.8;">
-                    <li><a href="noureldin-mamdouh-khamis-ahmed-certificate.pdf" target="_blank" rel="noopener noreferrer" style="color: var(--primary); font-weight: 600;">شهادة مليون خبير لأوامر الذكاء الاصطناعي (دبي للـ AI)</a></li>
-                </ul>
-            </section>
-            
-            <!-- Experience and Practical Training -->
-            <div class="section" id="experience">
-                <h2 class="section-title">💼 Experience and Practical Training</h2>
-                
-                <div class="experience-card">
-                    <h3>Audit and Accounting Trainee (6 months)</h3>
-                    <p>Financial Accounting and Auditing Office (Salah Salem, Heliopolis, Cairo) — Gaining financial auditing skills, analyzing balance sheets, evaluating internal controls, and preparing corporate reports.</p>  
-                </div>
-
-                <div class="experience-card">
-                    <h3>Practical Training in Legal Affairs</h3>
-                    <p>General Authority of Alexandria Port (July 2026) — Training on reviewing legal formulations and administrative procedures.</p>
-                </div>
-                
-                <div class="experience-card">
-                    <h3>Intensive Training - Youth Management and Volunteering Development</h3>
-                    <p>Egyptian Red Crescent (July 2026) — Effective participation in training and administrative voluntary work.</p>
-                </div>
-            </div>
-
-            <!-- Recommendation Letters and Official Documents -->
-            <div class="section" id="documents">
-                <h2 class="section-title">📄 Recommendation Letters and Official Documents</h2>
-                
-                <div class="cert-grid">
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">High School Grade Statement (Translated)</h3>
-                            <div class="cert-issuer">Ministry of Education / Egyptian Foreign Ministry</div>
-                        </div>
-                        <div class="cert-actions" style="grid-template-columns: 1fr;">
-                            <a href="english_success_statement.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View Document</a>
-                        </div>
-                    </div>
-                
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Academic Recommendation Letter</h3>
-                            <div class="cert-issuer">Nasser Academy (Mr. Mohamed Nasser)</div>
-                        </div>
-                        <div class="cert-actions" style="grid-template-columns: 1fr;">
-                            <a href="Nasser_Academy_Recommendation_Noureldin_Professional.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View Document</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Professional Recommendation Letter</h3>
-                            <div class="cert-issuer">Accounting and Auditing Office (Dr. Gerguis Fawzy)</div>
-                        </div>
-                        <div class="cert-actions" style="grid-template-columns: 1fr;">
-                            <a href="Letter_of_Recommendation.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View Document</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Certificate of Good Conduct</h3>
-                            <div class="cert-issuer">Field Marshal Ahmed Badawy Secondary School</div>
-                        </div>
-                        <div class="cert-actions" style="grid-template-columns: 1fr;">
-                            <a href="Certificate of good conduct .pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View Document</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Accreditations and Training Certificates -->
-            <div class="section">
-                <div class="section-title">
-                    <span>📜 Accreditations and Training Certificates</span>
-                    <div class="search-container">
-                        <span class="search-icon" aria-hidden="true">🔍</span>
-                        <input type="text" id="searchInput" class="search-input" aria-label="Search certificates" placeholder="Search for certificate or issuer...">
-                    </div>
-                </div>
-
-                <div class="cert-grid" id="certsContainer">
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Legal and Administrative Training Certificate</h3>
-                            <div class="cert-issuer">General Authority of Alexandria Port</div>
-                        </div>
-                        <div class="cert-actions" style="grid-template-columns: 1fr;">
-                            <a href="Alexandria_Port_Authority.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View Document</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Volunteer and Administrative Work Training</h3>
-                            <div class="cert-issuer">Egyptian Red Crescent</div>
-                        </div>
-                        <div class="cert-actions" style="grid-template-columns: 1fr;">
-                            <a href="Egyptian_Red_Crescent.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View Document</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Rosatom Atomic Challenge Certificate</h3>
-                            <div class="cert-issuer">Atomic Challenge 2026 (Rosatom & Atomic Cities)</div>
-                        </div>
-                        <div class="cert-actions" style="grid-template-columns: 1fr;">
-                            <a href="Russian_Acceptance.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View Document</a>
-                        </div>
-                    </div>
-                    
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Commercialization in Creative Industries</h3>
-                            <div class="cert-issuer">METU Crea / ODTÜ (EU & Ministry of Industry and Technology)</div>
-                        </div>
-                        <div class="cert-actions" style="grid-template-columns: 1fr;">
-                            <a href="Tamamlama_Belgesi.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View Document</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Prompt Engineering Expert (Foundation)</h3>
-                            <div class="cert-issuer">Dubai Future Foundation</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="Dubai_Future_Foundation_Prompt_Engineering.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View</a>
-                            <a href="https://www.dubaifuture.ae" target="_blank" rel="noopener noreferrer" class="btn-action btn-verify">Verify</a>
-                        </div>
-                    </div>      
-                
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">HR / Personnel Management (100% С отличием)</h3>
-                            <div class="cert-issuer">Omsk State Technical University (OmSTU) & Stepik</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="stepik_hr_management_omstu.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View</a>
-                            <a href="https://stepik.org/cert/3348801" target="_blank" rel="noopener noreferrer" class="btn-action btn-verify">Verify</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Fundamentals of Digital Marketing</h3>
-                            <div class="cert-issuer">Google Digital Garage</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="Google Digital Marketing Certificate.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View</a>
-                            <a href="https://learndigital.withgoogle.com/digitalgarage" target="_blank" rel="noopener noreferrer" class="btn-action btn-verify">Verify</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Effective Communication Skills</h3>
-                            <div class="cert-issuer">Edraak Platform</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="Edraak.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View</a>
-                            <a href="https://www.edraak.org" target="_blank" rel="noopener noreferrer" class="btn-action btn-verify">Verify</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">E-Marketing Basics</h3>
-                            <div class="cert-issuer">Forsa Platform</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="forsa-certificate.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View</a>
-                            <a href="https://forsa.com" target="_blank" rel="noopener noreferrer" class="btn-action btn-verify">Verify</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">Legal Contract Drafting</h3>
-                            <div class="cert-issuer">Ma3aarf Educational Platform</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="M3aarf_Course_Legal_Contract_Drafting.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View</a>
-                            <a href="https://www.ma3aarf.com" target="_blank" rel="noopener noreferrer" class="btn-action btn-verify">Verify</a>
-                        </div>
-                    </div>
-
-                    <div class="cert-card">
-                        <div>
-                            <h3 class="cert-title">C++ Programming Language</h3>
-                            <div class="cert-issuer">Ma3aarf Educational Platform</div>
-                        </div>
-                        <div class="cert-actions">
-                            <a href="M3aarf_Certificate c++.pdf" target="_blank" rel="noopener noreferrer" class="btn-action btn-view">View</a>
-                            <a href="https://www.ma3aarf.com" target="_blank" rel="noopener noreferrer" class="btn-action btn-verify">Verify</a>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </main>
+<main>
+  <section class="hero" id="about">
+    <span class="pill">🎓 Faculty of Law — Alexandria University</span>
+    <h1>Legal Precision meets Modern Business &amp; Technology</h1>
+    <p class="lead">Ambitious legal specialist with hands-on experience in business administration, financial auditing, and advanced artificial intelligence engineering.</p>
+    <div class="quote">❝ Стремление к юридической точности и инновационным технологиям.</div>
+    <div class="stats">
+      <div class="stat"><b>12+</b><span>Verified Certifications</span></div>
+      <div class="stat"><b>6 Mo.</b><span>Audit &amp; Legal Experience</span></div>
+      <div class="stat"><b>100%</b><span>Academic Excellence</span></div>
     </div>
+    <div class="profile" id="contact">
+      <div class="who"><div class="avatar"><img src="profile.jpg" alt="Noureldin Abuismail"></div><div><b>Noureldin Abuismail</b><small>Alexandria, Egypt</small></div></div>
+      <a class="btn" href="Noureldin_Abuismail_CV_EN.pdf" target="_blank" rel="noopener noreferrer">📄 View Resume / CV</a>
+      <div class="contacts">
+        <a href="tel:+201273818012">📞 +20 1273818012</a>
+        <a href="mailto:noureldin7122@gmail.com">✉️ noureldin7122@gmail.com</a>
+        <a href="mailto:law.NoureldinMamdouh261958@alexu.edu.eg">🏛️ Academic Mail</a>
+        <a href="https://wa.me/201273818012" target="_blank" rel="noopener noreferrer">💬 WhatsApp Direct</a>
+        <a href="https://t.me/Noureldin7" target="_blank" rel="noopener noreferrer">✈️ Telegram (@Noureldin7)</a>
+        <a href="https://vk.com/id1113090360" target="_blank" rel="noopener noreferrer">🔵 VKontakte Profile</a>
+      </div>
+    </div>
+  </section>
 
-    <button id="scrollTopBtn" title="Go to top" aria-label="Scroll to top">↑</button>
+  <section id="experience">
+    <h2 class="sec">💼 Professional Experience &amp; Internships</h2>
+    <div class="timeline">
+      <div class="tl"><h3>Audit and Accounting Trainee</h3><div class="org">Financial Accounting &amp; Auditing Office — Cairo (6 Months)</div><p>Gained comprehensive experience in financial auditing, balance sheet analysis, internal control evaluations, and official corporate financial report preparation under Dr. Gerguis Fawzy.</p></div>
+      <div class="tl"><h3>Practical Legal Affairs Trainee</h3><div class="org">General Authority of Alexandria Port (July 2026)</div><p>Trained on legal contract formulation, administrative dispute management, and maritime legal framework compliance.</p></div>
+      <div class="tl"><h3>Youth Management &amp; Voluntary Development</h3><div class="org">Egyptian Red Crescent (July 2026)</div><p>Intensive training in administrative organization, crisis management, and humanitarian field response operations.</p></div>
+    </div>
+  </section>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Live Search
-            const searchInput = document.getElementById('searchInput');
-            if (searchInput) {
-                searchInput.addEventListener('input', function () {
-                    const filter = this.value.toLowerCase().trim();
-                    const cards = document.querySelectorAll('#certsContainer .cert-card');
+  <section id="documents">
+    <h2 class="sec">📚 Recommendation Letters &amp; High School Documents</h2>
+    <div class="grid">
+      <div class="card"><div><span class="tag">Official Document</span><h3>High School Grade Statement</h3><div class="iss">🏫 Ministry of Education</div></div><div class="acts"><button class="btn" data-f="english_success_statement.pdf" data-t="High School Grade Statement">👁 View Document</button></div></div>
+      <div class="card"><div><span class="tag">Recommendation</span><h3>Academic Recommendation</h3><div class="iss">🏛️ Nasser Academy (Mr. Mohamed Nasser)</div></div><div class="acts"><button class="btn" data-f="Nasser_Academy_Recommendation_Noureldin_Professional.pdf" data-t="Academic Recommendation">👁 View Document</button></div></div>
+      <div class="card"><div><span class="tag">Recommendation</span><h3>Professional Audit Recommendation</h3><div class="iss">🏢 Dr. Gerguis Fawzy Office</div></div><div class="acts"><button class="btn" data-f="Letter_of_Recommendation.pdf" data-t="Professional Audit Recommendation">👁 View Document</button></div></div>
+      <div class="card"><div><span class="tag">Conduct Record</span><h3>Certificate of Good Conduct</h3><div class="iss">🏫 Field Marshal Badawy Secondary</div></div><div class="acts"><button class="btn" data-f="Certificate of good conduct .pdf" data-t="Certificate of Good Conduct">👁 View Document</button></div></div>
+    </div>
+  </section>
 
-                    cards.forEach(card => {
-                        const title = card.querySelector('.cert-title')?.innerText.toLowerCase() || '';
-                        const issuer = card.querySelector('.cert-issuer')?.innerText.toLowerCase() || '';
+  <section id="certificates">
+    <h2 class="sec">✅ Verified Certificates &amp; Accreditations</h2>
+    <input class="search" id="q" type="search" placeholder="Search certificates by title, keyword, or issuing authority…">
+    <div class="chips" id="chips">
+      <button class="chip on" data-c="all">All Certificates</button>
+      <button class="chip" data-c="ai">AI &amp; Tech</button>
+      <button class="chip" data-c="legal">Academic &amp; Legal</button>
+      <button class="chip" data-c="mgmt">Management &amp; Soft Skills</button>
+    </div>
+    <div class="grid" id="certs"></div>
+    <div class="empty" id="empty">No certificates match your search.</div>
+  </section>
+</main>
 
-                        if (title.includes(filter) || issuer.includes(filter)) {
-                            card.style.display = 'flex';
-                        } else {
-                            card.style.display = 'none';
-                        }
-                    });
-                });
-            }
+<div class="modal" id="modal">
+  <div class="mbox">
+    <div class="mtop"><b id="mt">Document</b><div><a class="btn ghost" id="mo" href="#" target="_blank" rel="noopener noreferrer">Open in new tab</a><button class="btn" id="mc">✕ Close</button></div></div>
+    <iframe id="mf" title="Document preview"></iframe>
+  </div>
+</div>
+<button class="down" id="down" aria-label="Scroll">↓</button>
 
-            // Dark Mode Toggle (persisted via localStorage)
-            const themeToggle = document.getElementById('themeToggleBtn');
-            let currentTheme = null;
-            try {
-                currentTheme = localStorage.getItem('theme');
-            } catch (e) {
-                currentTheme = null;
-            }
-
-            if (currentTheme) {
-                document.documentElement.setAttribute('data-theme', currentTheme);
-                if (currentTheme === 'dark') {
-                    themeToggle.textContent = '☀️ Light Mode';
-                }
-            }
-
-            themeToggle.addEventListener('click', () => {
-                const theme = document.documentElement.getAttribute('data-theme');
-                const newTheme = theme === 'dark' ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', newTheme);
-                themeToggle.textContent = newTheme === 'dark' ? '☀️ Light Mode' : '🌙 Dark Mode';
-                try {
-                    localStorage.setItem('theme', newTheme);
-                } catch (e) {
-                    /* storage unavailable, continue silently */
-                }
-            });
-
-            // Scroll to Top Button
-            const scrollTopBtn = document.getElementById('scrollTopBtn');
-            window.addEventListener('scroll', () => {
-                if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-                    scrollTopBtn.style.display = 'block';
-                } else {
-                    scrollTopBtn.style.display = 'none';
-                }
-            });
-
-            scrollTopBtn.addEventListener('click', () => {
-                window.scrollTo({ top: 0, behavior: 'smooth' });
-            });
-        });
-    </script>
+<script>
+var CERTS=[
+{t:"ESG Standards in Islamic Finance",i:"UNDP, Warba Bank & IsDBI (Oct 2026)",c:"legal",tag:"Academic",f:"ESG_Standards_Islamic_Institutions_Certificate.pdf"},
+{t:"Restoring Ecosystems: Legal, Policy & Governance",i:"UNDP Nature for Life Hub (Oct 2026)",c:"legal",tag:"Academic",f:"Legal_Governance_Certificate_UNDP.pdf"},
+{t:"Legal & Administrative Training",i:"General Authority of Alexandria Port",c:"legal",tag:"Legal",f:"Alexandria_Port_Authority.pdf"},
+{t:"Legal Contract Drafting",i:"Ma3aarf Educational Platform",c:"legal",tag:"Legal",f:"M3aarf_Course_Legal_Contract_Drafting.pdf",v:"https://www.ma3aarf.com"},
+{t:"Rosatom Atomic Challenge 2026",i:"Rosatom Russia",c:"legal",tag:"Academic",f:"Russian_Acceptance.pdf"},
+{t:"Million AI Prompters — Prompt Engineering Expert",i:"Dubai Future Foundation",c:"ai",tag:"AI & Tech",f:"Dubai_Future_Foundation_Prompt_Engineering.pdf",v:"https://www.dubaifuture.ae"},
+{t:"C++ Programming Language",i:"Ma3aarf Educational Platform",c:"ai",tag:"AI & Tech",f:"M3aarf_Certificate c++.pdf",v:"https://www.ma3aarf.com"},
+{t:"HR & Personnel Management (With Honors)",i:"OmSTU Russia & Stepik",c:"mgmt",tag:"Management",f:"stepik_hr_management_omstu.pdf",v:"https://stepik.org/cert/3348801"},
+{t:"Commercialization in Creative Industries",i:"METU Crea / ODTÜ",c:"mgmt",tag:"Management",f:"Tamamlama_Belgesi.pdf"},
+{t:"Volunteer & Administrative Work Training",i:"Egyptian Red Crescent",c:"mgmt",tag:"Soft Skills",f:"Egyptian_Red_Crescent.pdf"},
+{t:"Digital Marketing Fundamentals",i:"Google Digital Garage",c:"mgmt",tag:"Management",f:"Google Digital Marketing Certificate.pdf",v:"https://learndigital.withgoogle.com/digitalgarage"},
+{t:"E-Marketing Basics",i:"Forsa Platform",c:"mgmt",tag:"Management",f:"forsa-certificate.pdf",v:"https://forsa.com"},
+{t:"Effective Communication Skills",i:"Edraak Platform",c:"mgmt",tag:"Soft Skills",f:"Edraak.pdf",v:"https://www.edraak.org"}
+];
+var cat="all",root=document.documentElement,grid=document.getElementById("certs");
+function esc(s){return s.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
+grid.innerHTML=CERTS.map(function(x,n){return '<div class="card" data-n="'+n+'"><div><span class="tag">'+esc(x.tag)+'</span><h3>'+esc(x.t)+'</h3><div class="iss">'+esc(x.i)+'</div></div><div class="acts"><button class="btn" data-f="'+esc(x.f)+'" data-t="'+esc(x.t)+'">👁 Preview</button>'+(x.v?'<a class="btn ghost" href="'+x.v+'" target="_blank" rel="noopener noreferrer">🛡 Verify</a>':'')+'</div></div>'}).join("");
+function filt(){var q=document.getElementById("q").value.toLowerCase().trim(),shown=0;
+ grid.querySelectorAll(".card").forEach(function(el){var x=CERTS[el.dataset.n],ok=(cat==="all"||x.c===cat)&&(x.t+" "+x.i+" "+x.tag).toLowerCase().indexOf(q)>-1;el.style.display=ok?"":"none";if(ok)shown++});
+ document.getElementById("empty").style.display=shown?"none":"block"}
+document.getElementById("q").addEventListener("input",filt);
+document.getElementById("chips").addEventListener("click",function(e){var b=e.target.closest(".chip");if(!b)return;document.querySelectorAll(".chip").forEach(function(c){c.classList.remove("on")});b.classList.add("on");cat=b.dataset.c;filt()});
+var modal=document.getElementById("modal");
+function openDoc(f,t){document.getElementById("mt").textContent=t;document.getElementById("mf").src=f;document.getElementById("mo").href=f;modal.classList.add("on")}
+function closeDoc(){modal.classList.remove("on");document.getElementById("mf").src="about:blank"}
+document.addEventListener("click",function(e){var b=e.target.closest("button[data-f]");if(b)openDoc(b.dataset.f,b.dataset.t);if(e.target===modal)closeDoc()});
+document.getElementById("mc").addEventListener("click",closeDoc);
+document.addEventListener("keydown",function(e){if(e.key==="Escape")closeDoc()});
+var tb=document.getElementById("theme");
+function isDark(){var t=root.getAttribute("data-theme");return t?t==="dark":!window.matchMedia("(prefers-color-scheme: light)").matches}
+function setIcon(){tb.textContent=isDark()?"☀️":"🌙"}
+try{var s=localStorage.getItem("theme");if(s)root.setAttribute("data-theme",s)}catch(e){}
+setIcon();
+tb.addEventListener("click",function(){var n=isDark()?"light":"dark";root.setAttribute("data-theme",n);try{localStorage.setItem("theme",n)}catch(e){}setIcon()});
+var down=document.getElementById("down");
+down.addEventListener("click",function(){var atEnd=window.innerHeight+window.scrollY>=document.body.scrollHeight-80;window.scrollBy({top:atEnd?-document.body.scrollHeight:window.innerHeight*.8,behavior:"smooth"})});
+window.addEventListener("scroll",function(){down.textContent=(window.innerHeight+window.scrollY>=document.body.scrollHeight-80)?"↑":"↓"});
+</script>
 </body>
 </html>
