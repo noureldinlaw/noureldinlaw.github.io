@@ -87,7 +87,7 @@ h2.sec{display:flex;align-items:center;gap:10px;font-size:1.35rem;font-weight:90
     <p class="lead">Ambitious legal specialist with hands-on experience in business administration, financial auditing, and advanced artificial intelligence engineering.</p>
     <div class="quote">❝ Стремление к юридической точности и инновационным технологиям.</div>
     <div class="stats">
-      <div class="stat"><b>12+</b><span>Verified Certifications</span></div>
+      <div class="stat"><b id="cnt">15</b><span>Certifications</span></div>
       <div class="stat"><b>6 Mo.</b><span>Audit &amp; Legal Experience</span></div>
       <div class="stat"><b>100%</b><span>Academic Excellence</span></div>
     </div>
@@ -125,7 +125,7 @@ h2.sec{display:flex;align-items:center;gap:10px;font-size:1.35rem;font-weight:90
   </section>
 
   <section id="certificates">
-    <h2 class="sec">✅ Verified Certificates &amp; Accreditations</h2>
+    <h2 class="sec">✅ Certificates &amp; Accreditations</h2>
     <input class="search" id="q" type="search" placeholder="Search certificates by title, keyword, or issuing authority…">
     <div class="chips" id="chips">
       <button class="chip on" data-c="all">All Certificates</button>
@@ -148,23 +148,26 @@ h2.sec{display:flex;align-items:center;gap:10px;font-size:1.35rem;font-weight:90
 
 <script>
 var CERTS=[
-{t:"ESG Standards in Islamic Finance",i:"UNDP, Warba Bank & IsDBI (Oct 2026)",c:"legal",tag:"Academic",f:"ESG_Standards_Islamic_Institutions_Certificate.pdf"},
+{t:"General Course on Intellectual Property (DL-101)",i:"WIPO Academy — World Intellectual Property Organization",c:"legal",tag:"Legal",f:"WIPO_Academy_DL-101.pdf"},
 {t:"Restoring Ecosystems: Legal, Policy & Governance",i:"UNDP Nature for Life Hub (Oct 2026)",c:"legal",tag:"Academic",f:"Legal_Governance_Certificate_UNDP.pdf"},
+{t:"ESG Standards in Islamic Finance",i:"UNDP, Warba Bank & IsDBI (Oct 2026)",c:"legal",tag:"Academic",f:"ESG_Standards_Islamic_Institutions_Certificate.pdf"},
 {t:"Legal & Administrative Training",i:"General Authority of Alexandria Port",c:"legal",tag:"Legal",f:"Alexandria_Port_Authority.pdf"},
-{t:"Legal Contract Drafting",i:"Ma3aarf Educational Platform",c:"legal",tag:"Legal",f:"M3aarf_Course_Legal_Contract_Drafting.pdf",v:"https://www.ma3aarf.com"},
 {t:"Rosatom Atomic Challenge 2026",i:"Rosatom Russia",c:"legal",tag:"Academic",f:"Russian_Acceptance.pdf"},
-{t:"Million AI Prompters — Prompt Engineering Expert",i:"Dubai Future Foundation",c:"ai",tag:"AI & Tech",f:"Dubai_Future_Foundation_Prompt_Engineering.pdf",v:"https://www.dubaifuture.ae"},
-{t:"C++ Programming Language",i:"Ma3aarf Educational Platform",c:"ai",tag:"AI & Tech",f:"M3aarf_Certificate c++.pdf",v:"https://www.ma3aarf.com"},
-{t:"HR & Personnel Management (With Honors)",i:"OmSTU Russia & Stepik",c:"mgmt",tag:"Management",f:"stepik_hr_management_omstu.pdf",v:"https://stepik.org/cert/3348801"},
+{t:"HR & Personnel Management (With Honors)",i:"OmSTU Russia & Stepik",c:"mgmt",tag:"Management",f:"stepik_hr_management_omstu.pdf"},
+{t:"Legal Contract Drafting",i:"Ma3aarf Educational Platform",c:"legal",tag:"Legal",f:"M3aarf_Course_Legal_Contract_Drafting.pdf"},
+{t:"Million AI Prompters — Prompt Engineering Expert",i:"Dubai Future Foundation",c:"ai",tag:"AI & Tech",f:"Dubai_Future_Foundation_Prompt_Engineering.pdf"},
 {t:"Commercialization in Creative Industries",i:"METU Crea / ODTÜ",c:"mgmt",tag:"Management",f:"Tamamlama_Belgesi.pdf"},
 {t:"Volunteer & Administrative Work Training",i:"Egyptian Red Crescent",c:"mgmt",tag:"Soft Skills",f:"Egyptian_Red_Crescent.pdf"},
-{t:"Digital Marketing Fundamentals",i:"Google Digital Garage",c:"mgmt",tag:"Management",f:"Google Digital Marketing Certificate.pdf",v:"https://learndigital.withgoogle.com/digitalgarage"},
-{t:"E-Marketing Basics",i:"Forsa Platform",c:"mgmt",tag:"Management",f:"forsa-certificate.pdf",v:"https://forsa.com"},
-{t:"Effective Communication Skills",i:"Edraak Platform",c:"mgmt",tag:"Soft Skills",f:"Edraak.pdf",v:"https://www.edraak.org"}
+{t:"Techne Summit 2026 — Attendee",i:"aMEIW Event, Alexandria (Oct 2026)",c:"ai",tag:"Event",f:"Techne_Summit_2026_Attendee.pdf"},
+{t:"Digital Marketing Fundamentals",i:"Google Digital Garage",c:"mgmt",tag:"Management",f:"Google Digital Marketing Certificate.pdf"},
+{t:"Effective Communication Skills",i:"Edraak Platform",c:"mgmt",tag:"Soft Skills",f:"Edraak.pdf"},
+{t:"C++ Programming Language",i:"Ma3aarf Educational Platform",c:"ai",tag:"AI & Tech",f:"M3aarf_Certificate c++.pdf"},
+{t:"E-Marketing Basics",i:"Forsa Platform",c:"mgmt",tag:"Management",f:"forsa-certificate.pdf"}
 ];
 var cat="all",root=document.documentElement,grid=document.getElementById("certs");
 function esc(s){return s.replace(/&/g,"&amp;").replace(/"/g,"&quot;").replace(/</g,"&lt;")}
-grid.innerHTML=CERTS.map(function(x,n){return '<div class="card" data-n="'+n+'"><div><span class="tag">'+esc(x.tag)+'</span><h3>'+esc(x.t)+'</h3><div class="iss">'+esc(x.i)+'</div></div><div class="acts"><button class="btn" data-f="'+esc(x.f)+'" data-t="'+esc(x.t)+'">👁 Preview</button>'+(x.v?'<a class="btn ghost" href="'+x.v+'" target="_blank" rel="noopener noreferrer">🛡 Verify</a>':'')+'</div></div>'}).join("");
+grid.innerHTML=CERTS.map(function(x,n){return '<div class="card" data-n="'+n+'"><div><span class="tag">'+esc(x.tag)+'</span><h3>'+esc(x.t)+'</h3><div class="iss">'+esc(x.i)+'</div></div><div class="acts"><button class="btn" data-f="'+esc(x.f)+'" data-t="'+esc(x.t)+'">👁 Preview</button></div></div>'}).join("");
+document.getElementById("cnt").textContent=CERTS.length;
 function filt(){var q=document.getElementById("q").value.toLowerCase().trim(),shown=0;
  grid.querySelectorAll(".card").forEach(function(el){var x=CERTS[el.dataset.n],ok=(cat==="all"||x.c===cat)&&(x.t+" "+x.i+" "+x.tag).toLowerCase().indexOf(q)>-1;el.style.display=ok?"":"none";if(ok)shown++});
  document.getElementById("empty").style.display=shown?"none":"block"}
