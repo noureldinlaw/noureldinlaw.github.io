@@ -85,7 +85,7 @@ select,input{padding:10px;border:1px solid var(--b);border-radius:10px;backgroun
  <div id="cr" class="grid"></div>
 </section>
 <section id="v-set" hidden>
- <div class="card"><b>مفاتيح الأدوات المجانية</b><small>ضيف مفتاح أداة واحدة على الأقل (كلهم مجاني). المفاتيح بتتخزن على حسابك بس.</small><div id="kf"></div>
+ <div class="card"><b>مفاتيح الأدوات والوضع الافتراضي</b><small>التطبيق يعمل بمفتاح افتراضي متاح للجميع، ويمكنك إضافة مفتاحك الخاص هنا لضمان الاستخدام الشخصي المخصص.</small><div id="kf"></div>
  <label><input type="checkbox" id="fo" checked> OpenRouter: النماذج المجانية فقط</label>
  <b>أداة مخصصة (متوافقة مع OpenAI)</b><input id="cn" placeholder="الاسم"><input id="cu" placeholder="الرابط مثل https://.../v1" dir="ltr"><input id="ck" placeholder="المفتاح" dir="ltr">
  <button class="btn" onclick="saveSet()">حفظ وتحميل النماذج</button><div id="ss"></div></div>
@@ -116,7 +116,7 @@ const jget = (k, d) => { try { return JSON.parse(LS.getItem(UID + k)) ?? d } cat
 const jset = (k, v) => LS.setItem(UID + k, JSON.stringify(v));
 const sv = () => { try { LS.setItem(UID + 'nf_chats', JSON.stringify(chats.filter(c=>c.msgs.length).slice(0,50), (k,v)=>k==='_img'?undefined:v)); LS.setItem(UID+'nf_mem', mem); } catch(e){} };
 
-// استرجاع حالة تسجيل الدخول تلقائياً (مع التأكد من تفعيل البريد الإلكتروني)
+// استرجاع حالة تسجيل الدخول تلقائياً
 auth.onAuthStateChanged((user) => {
   if (user && user.emailVerified) {
     U = { id: user.uid, name: user.displayName || user.email.split('@')[0], email: user.email };
@@ -133,7 +133,7 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
-// وظيفة الدخول وإنشاء الحساب مع إرسال رابط التفعيل (OTP / Email Verification)
+// وظيفة الدخول وإنشاء الحساب
 async function authGo() {
     const e = document.getElementById('ae'), em = document.getElementById('aem').value.trim().toLowerCase(), pw = document.getElementById('apw').value, nm = document.getElementById('anm').value.trim();
     e.textContent = '';
@@ -146,20 +146,16 @@ async function authGo() {
             if (!nm) return e.textContent = 'اكتب اسمك';
             const cred = await auth.createUserWithEmailAndPassword(em, pw);
             await cred.user.updateProfile({ displayName: nm });
-            
-            // إرسال رابط التفعيل إلى البريد الإلكتروني
             await cred.user.sendEmailVerification();
             await auth.signOut();
-            
             e.style.color = 'var(--p)';
-            e.textContent = 'تم إنشاء الحساب بنجاح! تم إرسال رابط التفعيل إلى بريدك الإلكتروني، يرجى فتحه لتفعيل الحساب ثم تسجيل الدخول.';
+            e.textContent = 'تم إنشاء الحساب بنجاح! تم إرسال رابط التفعيل إلى بريدك الإلكتروني، يرجى فتحه لتفعيل الحساب.';
         } else {
             const cred = await auth.signInWithEmailAndPassword(em, pw);
-            
             if (!cred.user.emailVerified) {
                 await auth.signOut();
                 e.style.color = 'var(--r)';
-                e.textContent = 'حسابك لم يتفعل بعد! يرجى مراجعة بريدك الإلكتروني والضغط على رابط التفعيل.';
+                e.textContent = 'حسابك لم يتفعل بعد! يرجى مراجعة بريدك الإلكتروني.';
             } else {
                 e.textContent = '';
             }
@@ -168,29 +164,46 @@ async function authGo() {
         e.style.color = 'var(--r)';
         if (err.code === 'auth/email-already-in-use') e.textContent = 'الإيميل مسجل مسبقاً، يرجى تسجيل الدخول.';
         else if (err.code === 'auth/invalid-credential' || err.code === 'auth/wrong-password' || err.code === 'auth/user-not-found') e.textContent = 'الإيميل أو كلمة المرور غير صحيحة.';
-        else if (err.code === 'auth/network-request-failed') e.textContent = 'تأكد من اتصالك بالإنترنت.';
         else e.textContent = err.message;
     }
 }
 
-function logout() {
-    if(confirm('هل تريد تسجيل الخروج؟')) auth.signOut();
-}
+function logout() { if(confirm('هل تريد تسجيل الخروج؟')) auth.signOut(); }
 
 let amode = 'in';
 function am(m){ amode = m; document.getElementById('ti').classList.toggle('on',m=='in'); document.getElementById('tr').classList.toggle('on',m=='up'); document.getElementById('anm').hidden = (m=='in'); document.getElementById('ab').textContent = (m=='in'?'دخول':'إنشاء حساب'); document.getElementById('ae').textContent=''; }
 
 ['aem','apw','anm'].forEach(i => document.getElementById(i).onkeydown = e => { if(e.key == 'Enter') authGo(); });
 
-/*ENGINE*/
+/*ENGINE مع دعم المفتاح الافتراضي المدمج */
 const PRE=[{id:'groq',name:'Groq',url:'https://api.groq.com/openai/v1',h:'console.groq.com/keys'},
  {id:'gemini',name:'Google Gemini',url:'https://generativelanguage.googleapis.com/v1beta/openai',h:'aistudio.google.com/apikey'},
  {id:'openrouter',name:'OpenRouter',url:'https://openrouter.ai/api/v1',h:'openrouter.ai/keys'}];
 
+// مفاتيح افتراضية مدمجة ليعمل التطبيق مباشرة للمستخدمين الجدد
+const FALLBACK_KEYS = {
+  groq: "gsk_YourDefaultGroqKeyHere", 
+  gemini: "",
+  openrouter: ""
+};
+
 function loadUserData() {
-    keys = jget('nf_keys',{}); custom = jget('nf_custom',[]); models = jget('nf_models',[]);
+    keys = jget('nf_keys',{});
+    // دمج المفاتيح الافتراضية لو المستخدم مش ضايف مفتاح خاص به
+    for(let p of PRE) {
+        if(!keys[p.id] && FALLBACK_KEYS[p.id]) {
+            keys[p.id] = FALLBACK_KEYS[p.id];
+        }
+    }
+    custom = jget('nf_custom',[]); models = jget('nf_models',[]);
     chats = jget('nf_chats',[]); mem = LS.getItem(UID+'nf_mem')||'';
-    fillSel(); newChat(); if(!provs().length) go('set');
+    
+    // لو مفيش نماذج محمّلة مسبقاً، حملها أوتوماتيكياً بالمفتاح الافتراضي
+    if(!models.length && provs().length) {
+        loadModels(true).then(() => { fillSel(); newChat(); });
+    } else {
+        fillSel(); newChat(); if(!provs().length) go('set');
+    }
 }
 
 const provs=()=>PRE.map(p=>({...p,key:keys[p.id]})).concat(custom).filter(p=>p.key);
@@ -232,7 +245,7 @@ const $=id=>document.getElementById(id),fmt=t=>esc(t).replace(/```(?:[\w+-]*\n)?
 function go(v){['chat','cmp','set'].forEach(x=>$('v-'+x).hidden=x!=v);$('bar').hidden=v!='chat';showChip();tg(0);if(v=='set')drawSet();if(v=='cmp')drawCmp()}
 const CUBE='<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M12 2l9 5v10l-9 5-9-5V7z"/><path d="M12 22V12M3 7l9 5 9-5"/></svg>';
 function add(r,t){const w=document.createElement('div');w.className='row '+r;w.innerHTML='<div class="av">'+(r=='ai'?CUBE:esc((U&&U.name[0]||'N').toUpperCase()))+'</div><div class="m"></div>';const d=w.lastChild;d.innerHTML=r=='ai'?fmt(t):esc(t);msgs.appendChild(w);$('v-chat').scrollTop=1e9;return d}
-function newChat(){cur={id:Date.now(),t:Date.now(),title:'محادثة جديدة',msgs:[]};chats.unshift(cur);msgs.innerHTML='';add('ai','أهلاً '+(U?U.name:'')+'! أنا NOURELDIN AI. اسألني أي حاجة.');hist()}
+function newChat(){cur={id:Date.now(),t:Date.now(),title:'محادثة جديدة',msgs:[]};chats.unshift(cur);msgs.innerHTML='';add('ai','أهلاً '+(U?U.name:'')+'! أنا NOURELDIN AI. جاهز للخدمة.');hist()}
 function hist(){const h=$('hist');h.innerHTML='';const n=new Date(),d0=new Date(n.getFullYear(),n.getMonth(),n.getDate()).getTime(),G=[['اليوم',[]],['آخر 7 أيام',[]],['أقدم',[]]];
  chats.filter(c=>c.msgs.length).sort((a,b)=>(b.t||b.id)-(a.t||a.id)).slice(0,40).forEach(c=>{const t=c.t||c.id;G[t>=d0?0:t>=d0-6*864e5?1:2][1].push(c)});
  G.forEach(([g,l])=>{if(!l.length)return;h.insertAdjacentHTML('beforeend','<div class="gl">'+g+'</div>');l.forEach(c=>{const d=document.createElement('div');d.className='h';d.innerHTML='<i>💬</i><span></span><b>✕</b>';
@@ -241,7 +254,7 @@ function hist(){const h=$('hist');h.innerHTML='';const n=new Date(),d0=new Date(
 function sys(){const t=chats.filter(c=>c!==cur&&c.msgs.length).slice(0,6).map(c=>c.title).join(' | '); return mem||t?[{role:'system',content:'معلومات محفوظة عن المستخدم من محادثات سابقة:\n'+mem+(t?'\nمواضيع سابقة: '+t:'')}]:[]}
 async function updMem(u,a){try{mem=(await complete([{role:'user',content:'ذاكرة المستخدم الحالية:\n'+(mem||'(فاضية)')+'\n\nآخر تبادل:\nالمستخدم: '+u.slice(0,1200)+'\nالمساعد: '+a.slice(0,1200)+'\n\nحدّث الذاكرة: نقاط قصيرة بحقائق عن المستخدم وتفضيلاته وأي معلومة مهمة قالها. أقصى 1500 حرف. النقاط فقط.'}],order().find(x=>1)?.id)).slice(0,1800);sv()}catch(e){}}
 async function send(){if(busy)return;const t=inp.value.trim();if(!t&&!att)return;
- if(!models.length){go('set');return alert('ضيف مفتاح أداة واحدة على الأقل')}
+ if(!models.length){go('set');return alert('جاري تحميل النماذج، انتظر قليلاً أو تحقق من المفتاح')}
  const a=att;let txt=t,img=null;
  if(a){if(a.kind=='img'){img=a.data;txt=t||'حلل الصورة دي'}else txt=(t||'اقرأ الملف ده')+'\n\n--- محتوى الملف '+a.name+' ---\n'+a.text}
  busy=1;inp.value='';inp.style.height='auto';att=null;showChip();cur.msgs.push({role:'user',content:txt,_img:img});if(cur.msgs.length==1)cur.title=(t||(a&&a.name)||'محادثة').slice(0,30);
@@ -258,7 +271,7 @@ fi.onchange=async()=>{const f=fi.files[0];fi.value='';if(!f)return;
  if(f.size>2e6)return alert('الملف كبير (الحد 2MB)');att={kind:'file',name:f.name,text:(await f.text()).slice(0,12000)};showChip()};
 ii.onchange=async()=>{const f=ii.files[0];ii.value='';if(!f)return;try{att={kind:'img',name:f.name,data:await shrink(f)};showChip()}catch(e){alert(e.message)}};
 $('bm').onclick=async()=>{const bm=$('bm');if(rec){rec.stop();return}
- const g=prov('groq');if(!g)return alert('الصوت محتاج مفتاح Groq مجاني من الإعدادات.');
+ const g=prov('groq');if(!g)return alert('الصوت محتاج مفتاح Groq.');
  try{const st=await navigator.mediaDevices.getUserMedia({audio:true}),ch=[];rec=new MediaRecorder(st);
   rec.ondataavailable=e=>ch.push(e.data);
   rec.onstop=async()=>{st.getTracks().forEach(t=>t.stop());bm.classList.remove('rec');rec=null;bm.textContent='⏳';
@@ -269,11 +282,13 @@ $('bm').onclick=async()=>{const bm=$('bm');if(rec){rec.stop();return}
   rec.start();bm.classList.add('rec');bm.textContent='⏹'}catch(e){alert('اسمح للمتصفح باستخدام الميكروفون.')}};
 function showMem(){if(confirm('🧠 الذاكرة المحفوظة:\n\n'+(mem||'(فاضية)')+'\n\nتمسحها؟ (OK = مسح)')){mem='';sv()}}
 function fillSel(){const s=sel.value;sel.innerHTML='<option value="auto">NOURELDIN AI · تلقائي</option>';models.slice().sort((a,b)=>rk(a)-rk(b)).forEach(m=>{const o=document.createElement('option');o.value=m.id;o.textContent=m.id;sel.appendChild(o)});sel.value=s||'auto'}
-function drawSet(){kf.innerHTML='';PRE.forEach(p=>{const d=document.createElement('div');d.innerHTML='<b>'+p.name+'</b> <small dir=ltr>'+p.h+'</small><input style="width:100%" dir=ltr type=password id="k_'+p.id+'" placeholder="المفتاح">';kf.appendChild(d);$('k_'+p.id).value=keys[p.id]||''});
+function drawSet(){kf.innerHTML='';PRE.forEach(p=>{const d=document.createElement('div');d.innerHTML='<b>'+p.name+'</b> <small dir=ltr>'+p.h+'</small><input style="width:100%" dir=ltr type=password id="k_'+p.id+'" placeholder="المفتاح">';kf.appendChild(d);$('k_'+p.id).value=keys[p.id]==FALLBACK_KEYS[p.id]?'':(keys[p.id]||'')});
  ss.textContent=models.length?'النماذج المحمّلة: '+models.length:''}
-async function saveSet(){PRE.forEach(p=>{const v=$('k_'+p.id).value.trim();if(v)keys[p.id]=v;else delete keys[p.id]});jset('nf_keys',keys);
- if(cn.value&&cu.value&&ck.value){custom.push({id:'c'+(custom.length+1),name:cn.value.trim(),url:cu.value.trim().replace(/\/+$/,''),key:ck.value.trim()});jset('nf_custom',custom);cn.value=cu.value=ck.value=''}
- ss.textContent='جاري التحميل...';const n=await loadModels(fo.checked);fillSel();ss.textContent=n?'تم! النماذج المتاحة: '+n:'تأكد من المفاتيح والإنترنت'}
+async function saveSet(){
+    PRE.forEach(p=>{const v=$('k_'+p.id).value.trim();if(v)keys[p.id]=v;else if(!FALLBACK_KEYS[p.id])delete keys[p.id]});
+    jset('nf_keys',keys);
+    if(cn.value&&cu.value&&ck.value){custom.push({id:'c'+(custom.length+1),name:cn.value.trim(),url:cu.value.trim().replace(/\/+$/,''),key:ck.value.trim()});jset('nf_custom',custom);cn.value=cu.value=ck.value=''}
+    ss.textContent='جاري التحميل...';const n=await loadModels(fo.checked);fillSel();ss.textContent=n?'تم! النماذج المتاحة: '+n:'تأكد من المفاتيح والإنترنت'}
 function drawCmp(){const q=cf.value.toLowerCase();cl.innerHTML='';models.filter(m=>m.id.toLowerCase().includes(q)).slice(0,80).forEach(m=>{const l=document.createElement('label');const c=document.createElement('input');c.type='checkbox';c.value=m.id;l.append(c,m.id);cl.appendChild(l)})}
 async function cmp(all){const q=cq.value.trim();if(!q)return alert('اكتب السؤال');let ids;
  if(all){const seen={};ids=models.slice().sort((a,b)=>rk(a)-rk(b)).filter(m=>(seen[m.p]=(seen[m.p]||0)+1)<=4).slice(0,12).map(m=>m.id)}
