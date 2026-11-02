@@ -116,9 +116,9 @@ const jget = (k, d) => { try { return JSON.parse(LS.getItem(UID + k)) ?? d } cat
 const jset = (k, v) => LS.setItem(UID + k, JSON.stringify(v));
 const sv = () => { try { LS.setItem(UID + 'nf_chats', JSON.stringify(chats.filter(c=>c.msgs.length).slice(0,50), (k,v)=>k==='_img'?undefined:v)); LS.setItem(UID+'nf_mem', mem); } catch(e){} };
 
-// استرجاع حالة تسجيل الدخول تلقائياً
+// استرجاع حالة تسجيل الدخول تلقائياً (مع التأكد من تفعيل البريد الإلكتروني)
 auth.onAuthStateChanged((user) => {
-  if (user) {
+  if (user && user.emailVerified) {
     U = { id: user.uid, name: user.displayName || user.email.split('@')[0], email: user.email };
     UID = user.uid + ':';
     document.getElementById('auth').hidden = true;
@@ -133,23 +133,37 @@ auth.onAuthStateChanged((user) => {
   }
 });
 
-// وظيفة الدخول وإنشاء الحساب
+// وظيفة الدخول وإنشاء الحساب مع إرسال رابط التفعيل (OTP / Email Verification)
 async function authGo() {
     const e = document.getElementById('ae'), em = document.getElementById('aem').value.trim().toLowerCase(), pw = document.getElementById('apw').value, nm = document.getElementById('anm').value.trim();
     e.textContent = '';
     if (!/^\S+@\S+\.\S+$/.test(em) || pw.length < 6) return e.textContent = 'اكتب إيميل صحيح وكلمة مرور 6 أحرف على الأقل';
     
     e.style.color = 'var(--p)';
-    e.textContent = 'جاري التحقق...';
+    e.textContent = 'جاري المعالجة...';
     try {
         if (amode == 'up') {
             if (!nm) return e.textContent = 'اكتب اسمك';
             const cred = await auth.createUserWithEmailAndPassword(em, pw);
             await cred.user.updateProfile({ displayName: nm });
+            
+            // إرسال رابط التفعيل إلى البريد الإلكتروني
+            await cred.user.sendEmailVerification();
+            await auth.signOut();
+            
+            e.style.color = 'var(--p)';
+            e.textContent = 'تم إنشاء الحساب بنجاح! تم إرسال رابط التفعيل إلى بريدك الإلكتروني، يرجى فتحه لتفعيل الحساب ثم تسجيل الدخول.';
         } else {
-            await auth.signInWithEmailAndPassword(em, pw);
+            const cred = await auth.signInWithEmailAndPassword(em, pw);
+            
+            if (!cred.user.emailVerified) {
+                await auth.signOut();
+                e.style.color = 'var(--r)';
+                e.textContent = 'حسابك لم يتفعل بعد! يرجى مراجعة بريدك الإلكتروني والضغط على رابط التفعيل.';
+            } else {
+                e.textContent = '';
+            }
         }
-        e.textContent = '';
     } catch(err) {
         e.style.color = 'var(--r)';
         if (err.code === 'auth/email-already-in-use') e.textContent = 'الإيميل مسجل مسبقاً، يرجى تسجيل الدخول.';
